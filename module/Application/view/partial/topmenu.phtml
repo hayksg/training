@@ -1,0 +1,7 @@
+<ul class="<?=$this->navigation('topNavigation')->menu()->getUlClass() ?>" >
+    <?php foreach ($this->container as $page): ?>
+        <li class="<?= $page->get('wrapClass') ?> <?php if ($page->isActive()) echo 'active' ?> ">
+            <?= $this->navigation('topNavigation')->menu()->htmlify($page) ?>
+        </li>
+    <?php endforeach; ?>
+<ul>
