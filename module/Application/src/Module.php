@@ -17,6 +17,9 @@ class Module
             'factories' => [
                 'topNavigation' => Service\TopNavigation::class,
             ],
+            'invokables' => [
+                'loggerService' => Service\LoggerService::class,
+            ],
         ];
     }
 

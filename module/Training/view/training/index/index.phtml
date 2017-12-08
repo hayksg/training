@@ -1,4 +1,33 @@
 <?php
+
+/*class Greeting
+{
+    public function hello()
+    {
+        echo 'Hello world!' . '<hr>';
+    }
+}
+
+class MyGreeting
+{
+    public $greeting;
+
+    public function __construct(Greeting $greeting)
+    {
+        $this->greeting = $greeting;
+    }
+}
+
+#$myGreeting = new MyGreeting(new Greeting());
+#$myGreeting->greeting->hello();
+
+$di = new Zend\Di\Di();
+$myGreeting = $di->get('MyGreeting');
+$myGreeting->greeting->hello();*/
+
+?>
+
+<?php
 $headTitle = 'Training';
 $this->headTitle($headTitle);
 ?>
@@ -7,3 +36,4 @@ $this->headTitle($headTitle);
         <h3><?= $this->escapeHtml($headTitle) ?></h3>
     </div>
 </div>
+<p><?= $this->escapeHtml($this->greeting) ?></p>

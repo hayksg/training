@@ -6,9 +6,9 @@ use Zend\View\Helper\AbstractHelper;
 
 class GetYear extends AbstractHelper
 {
-    public function __invoke()
+    public function __invoke() : string
     {
         $year = date('Y');
-        return ($year > 2017) ? "2017 - {$year}" : $year;
+        return ($year > 2017) ? "2017 - {$year}" : "$year";
     }
 }
