@@ -18,6 +18,7 @@ class GreetingService implements GreetingServiceInterface
         $output = '';
         $hour = $dt->format('G');
 
+        $this->getEventManager()->setIdentifiers(['greetingIdentifier']);
         $this->getEventManager()->trigger('getGreeting', null, ['hour' => $hour]);
 
         /*$event = new Event();

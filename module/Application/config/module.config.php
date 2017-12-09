@@ -61,7 +61,7 @@ return [
                 'class' => 'nav-link',
             ],
             'blog' => [
-                'label' => 'blog',
+                'label' => 'Blog',
                 'route' => 'blog',
                 'wrapClass' => 'nav-item',
                 'class' => 'nav-link',

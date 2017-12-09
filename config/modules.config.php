@@ -28,4 +28,5 @@ return [
     'Training',
     'Blog',
     'Admin',
+    //'TrainingMod',
 ];

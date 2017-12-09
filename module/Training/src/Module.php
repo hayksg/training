@@ -2,6 +2,9 @@
 
 namespace Training;
 
+use Zend\ModuleManager\ModuleManagerInterface;
+use Zend\Mvc\MvcEvent;
+
 class Module
 {
     const VERSION = '3.0.3-dev';
@@ -19,6 +22,7 @@ class Module
             ],
             'factories' => [
                 'greetingService' => Service\GreetingServiceFactory::class,
+                'greetingAggregate' => Event\GreetingServiceListenerAggregateFactory::class,
             ],
         ];
     }
@@ -35,4 +39,33 @@ class Module
             ],
         ];
     }
+
+    /*public function init(ModuleManagerInterface $moduleManager)
+    {
+        $moduleManager->getEventManager()->getSharedManager()->attach(
+            __NAMESPACE__,
+            'dispatch',
+            [$this, 'onInit']
+        );
+    }*/
+
+    /*public function onInit()
+    {
+        echo __METHOD__;
+    }*/
+
+    /*public function onBootstrap(MvcEvent $event)
+    {
+        $event->getApplication()->getEventManager()->getSharedManager()->attach(
+            __NAMESPACE__,
+            'dispatch',
+            function ($event) {
+                $controller = $event->getTarget();
+                $controller->layout('layout/layoutTraining');
+            },
+            100
+        );
+    }*/
+
+
 }
