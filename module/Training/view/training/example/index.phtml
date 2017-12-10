@@ -1,0 +1,22 @@
+<?= $this->partial('partial/topMenuActive', ['liNum' => (int)0]) ?>
+
+<?php
+$headTitle = 'Example';
+$this->headTitle($headTitle);
+?>
+<div class="row">
+    <div class="col-sm-12">
+        <h3><?= $this->escapeHtml($headTitle) ?></h3>
+    </div>
+</div>
+<hr>
+<div><?= $this->escapeHtml($this->url) ?></div>
+<div><?= $this->escapeHtml($this->date) ?></div>
+<hr>
+<form action="#" method="post">
+    <input type="text" name="title">
+    <input type="submit" value="Submit">
+</form>
+<hr>
+<p><a href="<?= $this->url('training/example', ['action' => 'sample']) ?>">Sample</a></p>
+<p><a href="/training">&lArr; Back to Training</a></p>

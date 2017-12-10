@@ -63,3 +63,18 @@ a:hover, a:focus {
     color: #1a1a1a !important;
 }
 /* End block */
+
+.success-message, .error-message {
+    display: inline-block;
+    padding: 2px 4px;
+    border-radius: 3px;
+    color: #fff;
+}
+
+.success-message {
+    background: green;
+}
+
+.error-message {
+    background: red;
+}

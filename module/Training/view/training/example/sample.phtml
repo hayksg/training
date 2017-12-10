@@ -1,0 +1,15 @@
+<?= $this->partial('partial/topMenuActive', ['liNum' => (int)0]) ?>
+
+<?php
+$headTitle = 'Sample';
+$this->headTitle($headTitle);
+?>
+<div class="row">
+    <div class="col-sm-12">
+        <h3><?= $this->escapeHtml($headTitle) ?></h3>
+    </div>
+</div>
+<p><a href="/training/example">&lArr; Back to Example</a></p>
+<hr>
+<div><?php var_dump($this->header) ?></div>
+<hr>

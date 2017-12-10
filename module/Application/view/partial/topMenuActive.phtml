@@ -1,0 +1,9 @@
+<?php
+    $this->headScript()->appendScript(
+        '
+            $(function(){ 
+                $("ul.navbar-nav.mr-auto li").eq(' . $liNum . ').addClass("active") 
+            });
+        '
+    );
+?>
