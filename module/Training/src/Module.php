@@ -49,6 +49,15 @@ class Module
         ];
     }
 
+    public function getViewHelperConfig()
+    {
+        return [
+            'invokables' => [
+                'getTime' => View\Helper\GetTime::class,
+            ],
+        ];
+    }
+
     /*public function init(ModuleManagerInterface $moduleManager)
     {
         $moduleManager->getEventManager()->getSharedManager()->attach(

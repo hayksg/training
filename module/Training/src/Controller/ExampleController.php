@@ -14,7 +14,11 @@ class ExampleController extends AbstractActionController
             $this->prg();
         }
 
+        $widget = $this->forward()->dispatch(IndexController::class, ['action' => 'index']);
+
         $viewModel = new ViewModel();
+        $viewModel->addChild($widget, 'widget');
+        //$viewModel->setTemplate('training/example/template');
         $viewModel->setVariables([
             'url' => $this->url()->fromRoute(),
             'date' => $this->getDate(),
@@ -33,7 +37,7 @@ class ExampleController extends AbstractActionController
 
         $this->flashMessenger()->addSuccessMessage($successMessage);
         //$this->flashMessenger()->addErrorMessage($errorMessage);
-        return $this->redirect()->toRoute('training');
+        //return $this->redirect()->toRoute('training');
 
         return [
             'header' => get_headers('http://tutorial.loc'),
