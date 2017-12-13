@@ -1,0 +1,19 @@
+<?php
+$headTitle = 'Add article';
+$this->headTitle($headTitle);
+?>
+<div class="row">
+    <div class="col-sm-6">
+        <h3><?= $this->escapeHtml($headTitle) ?></h3>
+    </div>
+</div>
+<?= $this->partial('partial/flash-messenger'); ?>
+
+<hr>
+<div>
+    <!--<form action="<?/*= $this->url('training/article', ['action' => 'add']) */?>" method="post">-->
+    <form action="/training/article-process" method="post">
+        <input type="text" name="title">
+        <input type="submit" value="Submit">
+    </form>
+</div>

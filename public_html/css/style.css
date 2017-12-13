@@ -78,3 +78,7 @@ a:hover, a:focus {
 .error-message {
     background: red;
 }
+
+.add-article {
+    margin-top: -4px;
+}
