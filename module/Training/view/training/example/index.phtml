@@ -1,3 +1,80 @@
+<?php
+
+/*$val = '_';*/
+
+/*$stringLength = new \Zend\Validator\StringLength(['min' => 2, 'max' => 5]);
+$stringLength->setMessages([
+    \Zend\Validator\StringLength::TOO_SHORT => 'Too short',
+    \Zend\Validator\StringLength::TOO_LONG  => 'Too long',
+]);
+
+$notEmpty = new \Zend\Validator\NotEmpty();
+$notEmpty->setMessages([
+        \Zend\Validator\NotEmpty::IS_EMPTY => 'The value is empty',
+]);
+
+$alpha = new \Zend\I18n\Validator\Alpha();
+$alpha->setMessage('Not alpha', \Zend\I18n\Validator\Alpha::NOT_ALPHA);
+
+$validatorChain = new \Zend\Validator\ValidatorChain();
+$validatorChain->attach($stringLength);
+$validatorChain->attach($notEmpty);
+$validatorChain->attach($alpha);*/
+
+
+/*$validatorChain = new \Zend\Validator\ValidatorChain();
+$validatorChain->attachByName('StringLength', ['min' => 2, 'max' => 5]);
+$validatorChain->attachByName('Alpha');
+$validatorChain->attachByName('NotEmpty');*/
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*$floatValidator = new \Training\Validator\FloatValidator();
+
+$val = 10;
+
+if ($floatValidator->isValid($val)) {
+    echo 'Good';
+} else {
+    foreach ($floatValidator->getMessages() as $message) {
+        echo '<div>' . $message . '</div>';
+    }
+}*/
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*$str = '     <a href="#">Hello</a>';
+$stringTrim = new \Zend\Filter\StringTrim();
+$stripTags = new \Zend\Filter\StripTags();
+$filterChain = new \Zend\Filter\FilterChain();
+$filterChain->attach($stringTrim);
+$filterChain->attach($stripTags);
+$res = $filterChain->filter($str);
+
+echo $res;
+
+echo '<hr>'*/
+?>
+
+
+<?php
+
+$translator = new \Zend\I18n\Translator\Translator();
+
+$type = 'phparray';
+$fileName = 'ru.php';
+
+$path = getcwd() . '/data/translate/' . $fileName;
+
+if (file_exists($path)) {
+    $translator->addTranslationFile($type, $path);
+    echo $translator->translate('Hello');
+}
+
+echo '<hr>';
+
+?>
+
 <?= $this->partial('partial/topMenuActive', ['liNum' => (int)0]) ?>
 
 <?php
@@ -22,3 +99,4 @@ $this->headTitle($headTitle);
 <p><a href="/training">&lArr; Back to Training</a></p>
 <hr>
 <div><?= $this->widget ?></div>
+<div><a href="<?= $this->url('training/example', ['action' => 'download']) ?>">Download</a></div>

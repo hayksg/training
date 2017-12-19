@@ -17,7 +17,7 @@ class ExampleController extends AbstractActionController
         $widget = $this->forward()->dispatch(IndexController::class, ['action' => 'index']);
 
         $viewModel = new ViewModel();
-        $viewModel->addChild($widget, 'widget');
+        //$viewModel->addChild($widget, 'widget');
         //$viewModel->setTemplate('training/example/template');
         $viewModel->setVariables([
             'url' => $this->url()->fromRoute(),
@@ -42,5 +42,10 @@ class ExampleController extends AbstractActionController
         return [
             'header' => get_headers('http://tutorial.loc'),
         ];
+    }
+
+    public function downloadAction()
+    {
+
     }
 }

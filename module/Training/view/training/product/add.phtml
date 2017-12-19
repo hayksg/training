@@ -1,0 +1,15 @@
+<?php
+$headTitle = 'Add product';
+$this->headTitle($headTitle);
+?>
+<div class="row">
+    <div class="col-sm-12">
+        <h3><?= $this->escapeHtml($headTitle) ?></h3>
+    </div>
+</div>
+<?= $this->partial('partial/flash-messenger'); ?>
+<form action="/training/product-add" method="post">
+    <input type="text" name="title">
+    <input type="submit" value="Submit">
+</form>
+

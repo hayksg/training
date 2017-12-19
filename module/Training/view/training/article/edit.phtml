@@ -1,7 +1,7 @@
 <?= $this->partial('partial/topMenuActive', ['liNum' => (int)0]) ?>
 
 <?php
-$headTitle = 'Add article';
+$headTitle = 'Edit article';
 $this->headTitle($headTitle);
 ?>
 <div class="row">
@@ -11,7 +11,7 @@ $this->headTitle($headTitle);
 </div>
 <hr>
 <div class="panel">
-    <form action="/training/article-add" method="post">
+    <form action="/training/article-edit/12" method="post">
         <input type="text" name="title">
         <input type="submit" value="Submit">
     </form>

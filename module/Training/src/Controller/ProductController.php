@@ -5,7 +5,7 @@ namespace Training\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class ArticleController extends AbstractActionController
+class ProductController extends AbstractActionController
 {
     public function indexAction()
     {
@@ -20,50 +20,47 @@ class ArticleController extends AbstractActionController
     public function addPostAction()
     {
         if ($this->request->isPost()) {
-            $title = trim(htmlentities($this->request->getPost('title')));
-
-            $successMessage = 'Article added';
-            $errorMessage = 'Article not added';
+            $title = $this->request->getPost('title');
 
             if (! empty($title)) {
+                $successMessage = 'Product added';
                 $this->flashMessenger()->addSuccessMessage($successMessage);
             } else {
+                $errorMessage = 'Product not added';
                 $this->flashMessenger()->addErrorMessage($errorMessage);
             }
 
-            // For regex
-            // return $this->redirect()->toRoute('training/article', ['action' => 'article']);
-            return $this->redirect()->toRoute('training/article');
+            return $this->redirect()->toRoute('training/product');
+
+            // For regex route
+            // return $this->redirect()->toRoute('training/product', ['action' => 'product']);
         }
     }
 
     public function editAction()
     {
-        $id = $this->params()->fromRoute('id', 0);
-        //echo $id; exit;
-
         return [];
     }
 
     public function editPostAction()
     {
-        $id = $this->params()->fromRoute('id', 0);
+        //$id = $this->params()->fromRoute('id', 0);
 
         if ($this->request->isPost()) {
-            $title = trim(htmlentities($this->request->getPost('title')));
-
-            $successMessage = 'Article edited';
-            $errorMessage = 'Article not edited';
+            $title = $this->request->getPost('title');
 
             if (! empty($title)) {
+                $successMessage = 'Product edited';
                 $this->flashMessenger()->addSuccessMessage($successMessage);
             } else {
+                $errorMessage = 'Product not edited';
                 $this->flashMessenger()->addErrorMessage($errorMessage);
             }
 
-            // For regex
-            // return $this->redirect()->toRoute('training/article', ['action' => 'article']);
-            return $this->redirect()->toRoute('training/article');
+            return $this->redirect()->toRoute('training/product');
+
+            // For regex route
+            //return $this->redirect()->toRoute('training/product', ['action' => 'product']);
         }
     }
 }

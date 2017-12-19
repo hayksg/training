@@ -60,12 +60,25 @@ return [
                         ],
                     ],*/
 
+                    /*'article' => [
+                        'type' => Regex::class,
+                        'options' => [
+                            'regex'   => '/article(/(?<action>[a-z]+)(/(?<id>[0-9]+))?)?',
+                            'spec'    => '/%action%',
+                            'defaults' => [
+                                'controller' => Controller\ArticleController::class,
+                                'action'     => 'index',
+                            ],
+                        ],
+                    ],*/
+
                     'article' => [
                         'type' => Segment::class,
                         'options' => [
-                            'route'    => '/article[/:action]',
+                            'route'    => '/article[/:action][/:id]',
                             'constraints'    => [
-                                'action' => '[a-z]+'
+                                'action' => '[a-z]+',
+                                'id'     => '[0-9]+',
                             ],
                             'defaults' => [
                                 'controller' => Controller\ArticleController::class,
@@ -74,21 +87,20 @@ return [
                         ],
                     ],
 
-                    'articleProcess' => [
+                    'articleAdd' => [
                         'type' => Segment::class,
                         'options' => [
-                            'route'    => '/article-process[/:action]',
+                            'route'    => '/article-add',
                             'constraints'    => [
-                                'action' => '[a-z]+'
+                                'action' => '[a-z]+',
                             ],
                             'defaults' => [
                                 'controller' => Controller\ArticleController::class,
                                 'action'     => 'index',
                             ],
                         ],
-                        //'may_terminate' => true,
                         'child_routes' => [
-                            'articleGet' => [
+                            'addGet' => [
                                 'type' => Method::class,
                                 'options' => [
                                     'verb'    => 'get',
@@ -98,13 +110,49 @@ return [
                                     ],
                                 ],
                             ],
-                            'articlePost' => [
+                            'addPost' => [
                                 'type' => Method::class,
                                 'options' => [
                                     'verb'    => 'post',
                                     'defaults' => [
                                         'controller' => Controller\ArticleController::class,
-                                        'action'     => 'post',
+                                        'action'     => 'addPost',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+
+                    'articleEdit' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route'    => '/article-edit[/:id]',
+                            'constraints'    => [
+                                'id'     => '[0-9]+',
+                            ],
+                            'defaults' => [
+                                'controller' => Controller\ArticleController::class,
+                                'action'     => 'index',
+                            ],
+                        ],
+                        'child_routes' => [
+                            'editGet' => [
+                                'type' => Method::class,
+                                'options' => [
+                                    'verb'    => 'get',
+                                    'defaults' => [
+                                        'controller' => Controller\ArticleController::class,
+                                        'action'     => 'edit',
+                                    ],
+                                ],
+                            ],
+                            'editPost' => [
+                                'type' => Method::class,
+                                'options' => [
+                                    'verb'    => 'post',
+                                    'defaults' => [
+                                        'controller' => Controller\ArticleController::class,
+                                        'action'     => 'editPost',
                                     ],
                                 ],
                             ],
@@ -126,6 +174,108 @@ return [
                         ],
                     ],
 
+                    /*'product' => [
+                        'type' => Regex::class,
+                        'options' => [
+                            'regex'   => '/product(/(?<action>[a-z]+)(/(?<id>[0-9]+))?)?',
+                            'spec'    => '/%action%',
+                            'defaults' => [
+                                'controller' => Controller\ProductController::class,
+                                'action'     => 'index',
+                            ],
+                        ],
+                    ],*/
+
+                    'product' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route'    => '/product[/:action[/:id]]',
+                            'constraints'    => [
+                                'action' => '[a-z]+',
+                                'id'     => '[0-9]+',
+                            ],
+                            'defaults' => [
+                                'controller' => Controller\ProductController::class,
+                                'action'     => 'index',
+                            ],
+                        ],
+                    ],
+
+                    'productAdd' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route'    => '/product-add[/:action[/:id]]',
+                            'constraints'    => [
+                                'action' => '[a-z]+',
+                                'id'     => '[0-9]+',
+                            ],
+                            'defaults' => [
+                                'controller' => Controller\ProductController::class,
+                                'action'     => 'index',
+                            ],
+                        ],
+                        'child_routes' => [
+                            'productAddGet' => [
+                                'type' => Method::class,
+                                'options' => [
+                                    'verb'    => 'get',
+                                    'defaults' => [
+                                        'controller' => Controller\ProductController::class,
+                                        'action'     => 'add',
+                                    ],
+                                ],
+                            ],
+                            'productAddPost' => [
+                                'type' => Method::class,
+                                'options' => [
+                                    'verb'    => 'post',
+                                    'defaults' => [
+                                        'controller' => Controller\ProductController::class,
+                                        'action'     => 'addPost',
+                                    ],
+                                ],
+                            ],
+
+                        ],
+                    ],
+
+                    'productEdit' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route'    => '/product-edit[/:action][/:id]',
+                            'constraints'    => [
+                                'action' => '[a-z]+',
+                                'id'     => '[0-9]+',
+                            ],
+                            'defaults' => [
+                                'controller' => Controller\ProductController::class,
+                                'action'     => 'index',
+                            ],
+                        ],
+                        'child_routes' => [
+                            'productEditGet' => [
+                                'type' => Method::class,
+                                'options' => [
+                                    'verb'    => 'get',
+                                    'defaults' => [
+                                        'controller' => Controller\ProductController::class,
+                                        'action'     => 'edit',
+                                    ],
+                                ],
+                            ],
+                            'productEditPost' => [
+                                'type' => Method::class,
+                                'options' => [
+                                    'verb'    => 'post',
+                                    'defaults' => [
+                                        'controller' => Controller\ProductController::class,
+                                        'action'     => 'editPost',
+                                    ],
+                                ],
+                            ],
+
+                        ],
+                    ],
                 ],
             ],
         ],
@@ -135,8 +285,9 @@ return [
             //Controller\IndexController::class => InvokableFactory::class,
             //Controller\IndexController::class => Controller\IndexControllerFactory::class,
             Controller\ExampleController::class => InvokableFactory::class,
-            Controller\ArticleController::class => InvokableFactory::class,
             Controller\ShuffleController::class => InvokableFactory::class,
+            Controller\ProductController::class => InvokableFactory::class,
+            Controller\ArticleController::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [

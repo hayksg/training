@@ -1,0 +1,20 @@
+<?php
+$headTitle = 'Product';
+$this->headTitle($headTitle);
+?>
+<div class="row">
+    <div class="col-sm-6">
+        <h3><?= $this->escapeHtml($headTitle) ?></h3>
+    </div>
+    <div class="col-sm-6">
+        <div class="text-right product-add">
+            <a href="/training/product-add" class="btn btn-default">Add product</a>
+        </div>
+    </div>
+</div>
+<?= $this->partial('partial/flash-messenger'); ?>
+<div class="text-right product-add">
+    <a href="/training/product-edit/14" class="btn btn-default">Edit product</a>
+</div>
+
+
