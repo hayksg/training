@@ -12,15 +12,30 @@ $(function(){
 
     // scroll body to 0px on click
     $('#back-to-top').click(function () {
-        $('#back-to-top').tooltip('hide');
         $('body,html').animate({
             scrollTop: 0
         }, 500);
         return false;
     });
 
-    $('#back-to-top').tooltip('show');
+    ///   For training ajax   /////////////////////////////////////////////////
 
-    ///
+    var getUserData = function () {
+        var userForm = $('#ajax_user_form').serialize();
+
+        $.ajax({
+            url: '/training/ajax/manage',
+            type: 'post',
+            dataType: 'json',
+            data: userForm,
+            success: function (data) {
+                $('#result').text(data);
+            }
+        });
+
+        return false;
+    };
+
+    $('#ajax_user_form').on('submit', getUserData);
 
 });

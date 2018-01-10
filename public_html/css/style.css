@@ -86,3 +86,11 @@ a:hover, a:focus {
 .product-add {
     margin-top: -4px;
 }
+
+.color-red {
+    color: #d00;
+}
+
+#ajax_user_form label {
+    margin-top: 12px;
+}
